@@ -56,24 +56,33 @@ function tabulateScore(roll) {
   console.log(roll);
   console.log("tabscores")
 
-  var total = 0;
-  var newTotal = playerOneNum += roll;
-
-  console.log(newTotal);
+  var firstTotal = 0;
+  console.log(firstTotal);
+  var secondTotal = 0
+  console.log(secondTotal);
  
   if (playerOne.classList.contains('active')) {
     if (roll === 1) {
-      changePlayers();
+      console.log("First Craps")
       playerOneScore.textContent = 0;
+      firstTotal = 0;
+      console.log(firstTotal)
+      changePlayers();
     } else {
-        return playerOneScore.textContent = newTotal;
+        firstTotal = playerOneNum += roll;
+        console.log('FT', firstTotal);
+        playerOneScore.textContent = firstTotal;
       }
   } else {
-      return playerTwoScore.textContent = newTotal;
-    if (roll === 1) {
-      changePlayers();
-      playerTwoScore.textContent = 0;
-    }
+      if (roll === 1) {
+        console.log("Second Craps")
+        secondTotal = 0;
+        playerTwoScore.textContent = 0;
+        changePlayers();
+      }
+      secondTotal = playerTwoNum += roll;
+      console.log('ST', secondTotal);
+      playerTwoScore.textContent = secondTotal;
   }
 }
 
