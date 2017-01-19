@@ -41,6 +41,10 @@ function winGame() {
   // if total gets to 100 end game
 
 }
+
+function crapOut(player, roll) {
+  
+}
 // Generates Random Dice Roll
 function rollDice(min, max) {
   var min = Math.ceil(1);
@@ -57,32 +61,32 @@ function tabulateScore(roll) {
   console.log("tabscores")
 
   var firstTotal = 0;
-  console.log(firstTotal);
-  var secondTotal = 0
-  console.log(secondTotal);
+  var secondTotal = 0;
  
   if (playerOne.classList.contains('active')) {
-    if (roll === 1) {
+    if (roll !== 1) {
+      firstTotal = playerOneNum += roll;
+      console.log('FT', firstTotal);
+      playerOneScore.textContent = firstTotal;
+    }
+    else {
       console.log("First Craps")
       playerOneScore.textContent = 0;
-      firstTotal = 0;
       console.log(firstTotal)
       changePlayers();
-    } else {
-        firstTotal = playerOneNum += roll;
-        console.log('FT', firstTotal);
-        playerOneScore.textContent = firstTotal;
-      }
+      return firstTotal;
+    }
   } else {
-      if (roll === 1) {
+      if (roll !== 1) {
+        secondTotal = playerTwoNum += roll;
+        console.log('ST', secondTotal);
+        playerTwoScore.textContent = secondTotal;
+      } else {
         console.log("Second Craps")
-        secondTotal = 0;
         playerTwoScore.textContent = 0;
         changePlayers();
+        return secondTotal;
       }
-      secondTotal = playerTwoNum += roll;
-      console.log('ST', secondTotal);
-      playerTwoScore.textContent = secondTotal;
   }
 }
 
